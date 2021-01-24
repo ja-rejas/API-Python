@@ -24,6 +24,11 @@ provider:
       Action:
         - translate:TranslateText
       Resource: "*"
+    
+    - Effect: Allow
+      Action:
+        - comprehend:DetectDominantLanguage
+      Resource: "*"
 
 functions:
   create:
@@ -67,7 +72,7 @@ functions:
           cors: true
           
   translate:
-    handler: todos/translate.translate
+    handler: todos/translateText.translateText
     events:
       - http:
           path: todos/{id}/{languages}
